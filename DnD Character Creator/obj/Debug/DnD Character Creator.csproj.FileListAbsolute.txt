@@ -1,0 +1,14 @@
+C:\Users\thatb\source\repos\DnD Character Creator\DnD Character Creator\bin\Debug\DnD Character Creator.exe.config
+C:\Users\thatb\source\repos\DnD Character Creator\DnD Character Creator\bin\Debug\DnD Character Creator.exe
+C:\Users\thatb\source\repos\DnD Character Creator\DnD Character Creator\bin\Debug\DnD Character Creator.pdb
+C:\Users\thatb\source\repos\DnD Character Creator\DnD Character Creator\obj\Debug\DnD Character Creator.csprojAssemblyReference.cache
+C:\Users\thatb\source\repos\DnD Character Creator\DnD Character Creator\obj\Debug\DnD Character Creator.csproj.CoreCompileInputs.cache
+C:\Users\thatb\source\repos\DnD Character Creator\DnD Character Creator\obj\Debug\DnD Character Creator.exe
+C:\Users\thatb\source\repos\DnD Character Creator\DnD Character Creator\obj\Debug\DnD Character Creator.pdb
+C:\Users\thatb\Desktop\DnD Character Creator\DnD Character Creator\bin\Debug\DnD Character Creator.exe.config
+C:\Users\thatb\Desktop\DnD Character Creator\DnD Character Creator\bin\Debug\DnD Character Creator.exe
+C:\Users\thatb\Desktop\DnD Character Creator\DnD Character Creator\bin\Debug\DnD Character Creator.pdb
+C:\Users\thatb\Desktop\DnD Character Creator\DnD Character Creator\obj\Debug\DnD Character Creator.csprojAssemblyReference.cache
+C:\Users\thatb\Desktop\DnD Character Creator\DnD Character Creator\obj\Debug\DnD Character Creator.csproj.CoreCompileInputs.cache
+C:\Users\thatb\Desktop\DnD Character Creator\DnD Character Creator\obj\Debug\DnD Character Creator.exe
+C:\Users\thatb\Desktop\DnD Character Creator\DnD Character Creator\obj\Debug\DnD Character Creator.pdb
