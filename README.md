@@ -11,15 +11,16 @@ All character stats are automated and readjusted as you go. Details are provided
 Editing character settings is extremely easy and fast.
 
 Features:
- 4 core classes: Cleric, Fighter, Rogue, Wizard.
- Race selection: Dwarf, Elf, Halfling, Human, Dragonborn, Gnome, Half-Elf, Half-Orc, Tiefling.
- Stats are handled automatically, including skills. Standard array or Random stats.
- Equipment, Language, Skill selection.
+1. 4 core classes: Cleric, Fighter, Rogue, Wizard.
+2. Race selection: Dwarf, Elf, Halfling, Human, Dragonborn, Gnome, Half-Elf, Half-Orc, Tiefling.
+3. Stats are handled automatically, including skills. Standard array or Random stats.
+4. Equipment, Language, Skill selection.
 
 Future updates shall include:
- The remaining classes: Barbarian, Bard, Druid, Monk, Paladin, Ranger, Sorceror, Warlock.
- Point-Buy.
- Prepared Spells for magic users. Display of Spell Attack/DC/slots
- Add the Grappler Feat.
-
+1. The remaining classes: Barbarian, Bard, Druid, Monk, Paladin, Ranger, Sorceror, Warlock.
+2. Point-Buy.
+3. Prepared Spells for magic users. Display of Spell Attack/DC/slots
+4. Add the Grappler Feat.
+5. Launch settings into a webpage and pre-fill everything into a character sheet.
+6. Ability to save loadouts.
 
