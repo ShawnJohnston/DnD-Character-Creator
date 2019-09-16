@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -44,17 +44,24 @@ namespace DnD_Character_Creator
         public string SetGender()
         {
             Console.Clear();
-            string[] genderOptions = { "Male ", "Female", "I am a robot. Beep boop. " };
-            string[] genderSelection = { "Male", "Female", "Unspecified" };
-            Gender = Builder.Selection("Choose your character's gender: ", genderOptions, genderSelection);
+            string[] genderOptions = { "Male ", "Female", "I am a robot. Beep boop. "};
+            string[] genderSelection = { "Male", "Female", "Unspecified"};
+            while (Gender == "")
+            {
+                Gender = Builder.Selection("Choose your character's gender: ", genderOptions, genderSelection);
+            }
             return Gender;
         }
         public string SetAlignment()
         {
             string[] alignments = { "Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "True Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil", "What are you even talking about??" };
-            Alignment = Builder.Selection("What is your character's alignment?     \r\nLawful Good     Neutral Good     Chaotic Good    " +
+            while (Alignment == "")
+            {
+                Alignment = Builder.Selection("What is your character's alignment?     \r\nLawful Good     Neutral Good     Chaotic Good    " +
                                                                                            "\r\nLawful Neutral  True Neutral     Chaotic Neutral " +
                                                                                            "\r\nLawful Evil     Neutral Evil     Chaotic Evil    \r\n", alignments, alignments);
+            }
+            
             if (Alignment == "What are you even talking about??") //Secondary menu to help users if they don't understand character alignment
             {
                 Alignment = AlignmentHelp();
@@ -63,14 +70,22 @@ namespace DnD_Character_Creator
         }
         public static string AlignmentHelp() //Provides some help for new players who don't fully understand alignment. This application is not designed to be a tutorial, however this functionality is included as a courtesy.
         {
+            string choice1 = "";
+            string choice2 = "";
             string[] alignment1 = { "Lawful", "Neutral", "Chaotic" };
             string[] alignment2 = { "Good", "Neutral", "Evil" };
 
             string[] options1 = { "Yes, absolutely", "In between; It depends on the situation", "No, nobody tells my character what to do." };
             string[] options2 = { "Yes. Absolutely", "In between; It depends on the situation; There's no such thing as good or evil; etc.", "No, my character is a villain." };
 
-            string choice1 = Builder.Selection("Does your character obey laws, rules, norms, etc.?", options1, alignment1);
-            string choice2 = Builder.Selection("Is your character morally good? ", options2, alignment2);
+            while (choice1 == "")
+            {
+                choice1 = Builder.Selection("Does your character obey laws, rules, norms, etc.?", options1, alignment1);
+            }
+            while (choice2 == "")
+            {
+                choice2 = Builder.Selection("Is your character morally good? ", options2, alignment2);
+            }
 
             string combine = choice1 + " " + choice2;
             if (combine == "Neutral Neutral")
