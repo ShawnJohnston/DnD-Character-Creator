@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,18 +21,26 @@ namespace DnD_Character_Creator
         public string SetBackground()
         {
             string[] background = { "None", "Acolyte" };
-            string backgroundOption = Builder.Selection("Choose your character background: \r\n*Note: The only background available in D&D SRD is Acolyte. \r\n\r\n" +
+            string backgroundOption = "";
+            while (backgroundOption == "")
+            {
+                backgroundOption = Builder.Selection("Choose your character background: \r\n*Note: The only background available in D&D SRD is Acolyte. \r\n\r\n" +
                                                         "Acolyte: \r\n" +
                                                         "Skill Proficiencies: Insight, Religion \r\n" +
                                                         "Language Proficiencies: +2 Any\r\n" +
                                                         "Equipment: Holy Symbol\r\n" +
                                                         "Feature: Shelter of the Faithful \r\n", background, background);
+            }
             return backgroundOption;
         }
         public string SetClass()
         {
+            string CClass = "";
             string[] basicClass = { "Cleric", "Fighter", "Rogue", "Wizard" };
-            string CClass = Builder.Selection("Choose your character class: ", basicClass, basicClass);
+            while (CClass == "")
+            {
+                CClass = Builder.Selection("Choose your character class: ", basicClass, basicClass);
+            }
             return CClass;
         }
         public CharacterClass(string subClass = "", int hitPointsConstant = 0, string hitDice = "", List<string> classArms = null, List<string> classTools = null, List<string> savingThrows = null, string[] classSkills = null, List<string> features = null)
@@ -140,8 +148,6 @@ namespace DnD_Character_Creator
                 Cleric cleric = new Cleric();
                 cleric.DomainSpells = new List<string> { "Bless", "Cure Wounds" };
                 cleric.Cantrips = cleric.SelectSpells(cleric, 0, abilityModifiers);
-
-                features.Class.Add("Cantrips: ");
                 foreach (string cantrip in cleric.Cantrips)
                 {
                     features.Class.Add(cantrip);
