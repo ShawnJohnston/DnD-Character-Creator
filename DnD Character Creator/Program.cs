@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,7 +16,7 @@ namespace DnD_Character_Creator
     //Low priority
     //5.    Refactor RefreshValues() method. It is written poorly.
     //6.    Character background needs to include personality trait, ideal, bond, flaw.
-    //7.    Use of the DiceRoll.Roll method if the user wants to pick something randomly. Random selection is used for some exception handling, however that is not an intended feature.
+    //7.    Use of the DiceRoll.Roll method if the user wants to pick something randomly.
     //8.    Include more descriptions for specific setings (ie. spells, etc.)
     //9.    Race selections that don't include a subrace are misaligned to the right by 1 space.
     class Program
@@ -104,14 +104,18 @@ namespace DnD_Character_Creator
                         return true;
                     case "Gender":
                         Console.Clear();
+                        character.Gender = "";
                         character.Gender = character.SetGender();
                         character.GenderSet = true;
                         return true;
                     case "Race": //Races in D&D are better described as humanoid subspecies. Dwarfs differ from Elves like Pitbulls differ from Greyhounds.
                         Console.Clear();
+                        character.Race = "";
                         RaceListsReset();   //Empties relevent lists used when character race is changed.
-
-                        character.Race = race.SetRace();
+                        while (character.Race == "")
+                        {
+                            character.Race = race.SetRace();
+                        }
                         racialBonus = CharacterRace.Conditionals(character, race, racialBonus, equipment, languages, proficiencies, features); //Secondary menu for character race
                         languages.List = new List<string> { "Common", languages.Native };   //The language list is cleared. Common and native language from race are set. Other languages known will be set under "Language/Proficiency" menu.
 
@@ -125,6 +129,8 @@ namespace DnD_Character_Creator
                     case "Background & Class": //User can choose Acolyte background or None. Only the 4 classic D&D classes are included for now. The rest will be included in later updates.
                         Console.Clear();
                         ClassListsReset();  //Empties relevent lists used when character race is changed.
+                        character.Background = "";
+                        character.CClass = "";
                         string backgroundPrevious = character.Background;
                         character.Background = characterClass.SetBackground();
                         if (!character.Background.Equals(backgroundPrevious))   //If the user removes the 'Acolyte' background, the language list should reset so that they don't get the extra language benefits.
@@ -147,6 +153,7 @@ namespace DnD_Character_Creator
                         return true;
                     case "Alignment":   //Character alignment describes broad-stroked trajectory of character's moral/social tendencies. Mostly for role-play, but matters for Cleric/Paladin classes.
                         Console.Clear();
+                        character.Alignment = "";
                         character.Alignment = character.SetAlignment();
                         character.AlignmentSet = true;
                         return true;
