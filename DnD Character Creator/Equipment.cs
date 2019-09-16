@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -44,12 +44,11 @@ namespace DnD_Character_Creator
             //For all of this code, a new equipment list is created, and the user will select items from a series of prompts. 
             //First, the user selects weapons and armor.
             //Second, the user selects a bag containing adventuring gear.
-
             equipment = new List<string> { "Shield", "Holy Symbol" };   //All Clerics will start with these items.
             if (character.Race == "Dwarf")  //Dwarfs have weapon proficiency with warhammers.
             {
-                string[] startingInitialWeapon = { "Mace", "Warhammer" };   
-                equipment.Add(Builder.Selection("Select a starting weapon: ", startingInitialWeapon, startingInitialWeapon));
+                string[] startingInitialWeapon = { "Mace", "Warhammer" };
+                equipment.Add(Builder.ItemToList("Select a starting weapon: ", "", startingInitialWeapon, startingInitialWeapon));
             }
             else    //Mace will be selected by default if the character doesn't have warhammer proficiency. There's no reason to let the user pick a first weapon they can't use.
             {
@@ -58,9 +57,10 @@ namespace DnD_Character_Creator
             string firstWeapon = equipment.Last();
             string[] startingArmor = { "Scale Mail       AC: 13 + Dex modifier (max 2)", //Chain Mail is only an option if the character is proficient with heavy armor. Because SRD only allows the Cleric to choose Life Domain anyway (which grants Heavy Armor Proficiency, the option is included here for simplicity.
                                        "Leather Armor    AC: 11 + Dex modifier",
-                                       "Chain Mail       AC: 16" };
-            string[] startingArmorSelection = { "Scale Mail", "Leather Armor", "Chain Mail" };
-            equipment.Add(Builder.Selection("Select starting armor: ", startingArmor, startingArmorSelection));
+                                       "Chain Mail       AC: 16"};
+            string[] startingArmorSelection = { "Scale Mail", "Leather Armor", "Chain Mail"};
+
+            equipment.Add(Builder.ItemToList("Select a starting armor: ", "", startingArmor, startingArmorSelection));
 
             string[] startingWeapons = { "Club                    1d4 bludgeoning, light",    //User can choose a crossbow or any simple weapon
                                          "Dagger                  1d4 piercing, finesse, light, thrown (range 20/60)",
@@ -78,14 +78,14 @@ namespace DnD_Character_Creator
                                          "Sling                  1d4 bludgeoning, Ammunition (30/120)" };
             string[] startingWeaponsSelection = { "Club", "Dagger", "Greatclub", "Handaxe", "Javelin", "Light Hammer", "Mace", "Quarterstaff", "Sickle", "Spear", "Crossbow w/ 20 bolts", "Dart", "Shortbow", "Sling" }; //User can choose a crossbow or any simple weapon
 
-            equipment.Add(Builder.Selection($"Your Cleric has a {firstWeapon}. \r\nSelect a second weapon: ", startingWeapons, startingWeaponsSelection));
+            equipment.Add(Builder.ItemToList($"Your Cleric has a {firstWeapon}. \r\nSelect a second weapon: ", "", startingWeapons, startingWeaponsSelection));
 
             string[] equipmentPack = { "Priest’s Pack: \r\n" +
                                        "   backpack, blanket, 10 candles, tinderbox, alms box, 2 blocks of incense, censer, vestments, 2 days rations, waterskin",
                                        "Explorer’s Pack: \r\n" +
                                        "   backpack, bedroll, mess kit, tinderbox, 10 torches, 10 days rations, waterskin, 50 ft of hempen rope" };
             string[] equipmentPackSelection = { "Priest's Pack", "Explorer's Pack" };
-            equipment.Add(Builder.Selection("Select an equipment pack: ", equipmentPack, equipmentPackSelection));
+            equipment.Add(Builder.ItemToList("Select an equipment pack: ", "", equipmentPack, equipmentPackSelection));
             return equipment;
         }
         public static List<string> Fighter(List<string> equipment, CharacterBasic character, Stats abilityModifiers, Features features)
@@ -98,13 +98,13 @@ namespace DnD_Character_Creator
             string[] fightingStylesOption = { "Archery", "Defense", "Dueling", "Great Weapon Fighting", "Protection", "Two Weapon Fighting" };
             for (int i = 0; i < 1; i++)
             {
-                string fightingStyle = $"Fighting Style: {Builder.Selection("Select a fighting style: ", fightingStylesOption, fightingStylesOption)}";
+                string fightingStyle = $"Fighting Style: {Builder.ItemToList("Select a fighting style: ", "", fightingStylesOption, fightingStylesOption)}";
                 features.Class[0] = fightingStyle;
             }
             string[] startingArmor = {"Leather Armor, Longbow w/ 20 arrows         AC: 11 + Dex modifier",
                                       "Chain Mail                                  AC: 16" };
             string[] startingArmorSelection = { "Leather Armor  Longbow w/ 20 arrows", "Chain Mail" };
-            switch (Builder.Selection("Select starting armor: ", startingArmor, startingArmorSelection))
+            switch (Builder.ItemToList("Select starting armor: ", "", startingArmor, startingArmorSelection))
             {
                 case "Leather Armor  Longbow w/ 20 arrows":
                     equipment.Add("Leather Armor");
@@ -115,15 +115,16 @@ namespace DnD_Character_Creator
                     break;
             }
             Console.Clear();
-            string[] martialWeapons = { "Battleaxe      1d8 slashing, Versatile (1d10)",
-                                        "Flail          1d8 bludgeoning",
-                                        "Glaive         1d10 slashing, Heavy, reach, two-handed",
-                                        "Greataxe       1d12 slashing, Heavy, two-handed",
-                                        "Greatsword     2d6 slashing, Heavy, two-handed",
-                                        "Halberd        1d10 slashing, Heavy, reach, two-handed",
-                                        "Lance          1d12 piercing, Reach, special",
-                                        "Maul           2d6 bludgeoning, Heavy, two-handed",
-                                        "Morningstar    1d8 piercing",
+            string[] martialWeapons = { " Battleaxe     1d8 slashing, Versatile (1d10)",
+                                        " Flail         1d8 bludgeoning",
+                                        " Glaive        1d10 slashing, Heavy, reach, two-handed",
+                                        " Greataxe      1d12 slashing, Heavy, two-handed",
+                                        " Greatsword    2d6 slashing, Heavy, two-handed",
+                                        " Halberd       1d10 slashing, Heavy, reach, two-handed",
+                                        " Longsword     1d8 slashing, Verrsatile",
+                                        " Lance         1d12 piercing, Reach, special",
+                                        " Maul          2d6 bludgeoning, Heavy, two-handed",
+                                        "Morningstar   1d8 piercing",
                                         "Pike          1d6 piercing,	Heavy, reach, two-handed",
                                         "Rapier        1d6 piercing, Finesse",
                                         "Scimitar      1d6 slashing, Finesse, light",
@@ -134,29 +135,28 @@ namespace DnD_Character_Creator
                                         "Whip          1d4 slashing, Finesse, reach" };
             string[] martialWeaponsSelected = { "Battleaxe", "Flail", "Glaive", "Greataxe", "Greatsword", "Halberd", "Lance", "Longsword", "Maul", "Morningstar", "Pike", "Rapier", "Scimitar", "Shortsword", "Trident", "War pick", "Warhammer", "Whip" };
             string[] armsChoice = { "Weapon and Shield", "2 Weapons" };
-            switch (Builder.Selection("You can choose between a martial weapon w/ shield or 2 martial weapons. A shield adds +2 to AC when equipped.", armsChoice, armsChoice))
+            switch (Builder.ItemToList("You can choose between a martial weapon w/ shield or 2 martial weapons. A shield adds +2 to AC when equipped.", "", armsChoice, armsChoice))
             {
                 case "Weapon and Shield":
                     equipment.Add("Shield");
-                    equipment.Add(Builder.Selection("Select a martial weapon: ", martialWeapons, martialWeaponsSelected));
+                    equipment.Add(Builder.ItemToList("Select a martial weapon: ", "", martialWeapons, martialWeaponsSelected));
                     break;
                 case "2 Weapons":
                     for (int i = 0; i < 2; i++)
                     {
                         Console.Clear();
-                        equipment.Add(Builder.Selection($"Select 2 martial weapons. \r\nSelection {i + 1}:", martialWeapons, martialWeaponsSelected));
+                        equipment.Add(Builder.ItemToList($"Select 2 martial weapons. \r\nSelection {i + 1}:", "", martialWeapons, martialWeaponsSelected));
                     }
                     break;
             }
             string[] armsChoice2 = { "Light Crossbow w/ 20 bolts", "2 Handaxe" };
-            equipment.Add(Builder.Selection("Select between a Crossbow or 2 Handaxes: ", armsChoice2, armsChoice2));
-
+            equipment.Add(Builder.ItemToList("Select between a Crossbow or 2 Handaxes: ", "", armsChoice2, armsChoice2));
             string[] equipmentPack = { "Dungeoneer’s Pack: \r\n" +
                                        "   backpack, crowbar, hammer, 10 pitons, 10 torches, tinderbox, 10 day's rations, waterskin. 50 feet of hempen rope",
                                        "Explorer’s Pack: \r\n" +
                                        "   backpack, bedroll, mess kit, tinderbox, 10 torches, 10 day's rations, waterskin, 50 ft of hempen rope" };
             string[] equipmentPackSelection = { "Dungeoneer's Pack", "Explorer's Pack" };
-            equipment.Add(Builder.Selection("Select an equipment pack: ", equipmentPack, equipmentPackSelection));
+            equipment.Add(Builder.ItemToList("Select an equipment pack: ", "", equipmentPack, equipmentPackSelection));
             Console.Clear();
             return equipment;
         }
@@ -171,12 +171,12 @@ namespace DnD_Character_Creator
             string[] armsChoice = { "Rapier         1d6 piercing, Finesse",
                                     "Shortsword     1d4 piercing, Finesse, light" };
             string[] armsChoiceSelection = { "Rapier", "Shortsword" };
-            equipment.Add(Builder.Selection("Selection one of the 2: ", armsChoice, armsChoiceSelection));
+            equipment.Add(Builder.ItemToList("Selection one of the 2: ", "", armsChoice, armsChoiceSelection));
             string[] armsChoice2 = { "Shortbow & Quiver  1d6 piercing, Ammunition (range 80/320),two-handed\r\n" +
                                      "  w/ 20 arrows",
                                      "Shortsword         1d4 piercing, Finesse, light" };
             string[] armsChoiceSelection2 = { "Shortbow & Quiver w/ 20 arrows", "Shortsword" };
-            switch (Builder.Selection("Selection one of the 2: ", armsChoice2, armsChoiceSelection2))
+            switch (Builder.ItemToList("Selection one of the 2: ", "", armsChoice2, armsChoiceSelection2))
             {
                 case "Shortbow & Quiver w/ 20 arrows":
                     equipment.Add("Shortbow & Quiver");
@@ -192,7 +192,7 @@ namespace DnD_Character_Creator
                                        "Explorer’s Pack: \r\n" +
                                        "   backpack, bedroll, mess kit, tinderbox, 10 torches, 10 day's rations, waterskin, 50 ft of hempen rope" };
             string[] equipmentPackSelection = { "Dungeoneer's Pack", "Explorer's Pack" }; //Website error, verify elsewhere
-            equipment.Add(Builder.Selection("Select an equipment pack: ", equipmentPack, equipmentPackSelection));
+            equipment.Add(Builder.ItemToList("Select an equipment pack: ", "", equipmentPack, equipmentPackSelection));
             return equipment;
         }
         public static List<string> Wizard(List<string> equipment, CharacterBasic character, Stats abilityModifiers, Features features)
@@ -211,26 +211,26 @@ namespace DnD_Character_Creator
                                      "      A special item— an orb, a crystal, a rod, a specially constructed staff, a wand-­‐like length of wood, or \r\n" +
                                      "      some similar item— designed to channel the power of arcane spells.\r\n" };
             string[] magicMediumSelection = { "Component Pouch", "Arcane Focus" };
-            string medium = Builder.Selection("Select a magic item: \r\n", magicMedium, magicMediumSelection);
+            string medium = Builder.ItemToList("Select a magic item: \r\n", "", magicMedium, magicMediumSelection);
             if (medium == "Arcane Focus")
             {
                 string[] focusOptions = { "Orb", "Crystal", "Rod", "Staff", "Wooden Wand", "Other" };
                 string[] focusSelection = { "Orb", "Crystal", "Rod", "Staff", "Wooden Wand", "" };
-                medium = Builder.Selection("Select a magic item: \r\n", focusOptions, focusSelection);
+                medium = Builder.ItemToList("Select a magic item: \r\n", "", focusOptions, focusSelection);
             }
             equipment.Add(medium);
 
             string[] armsChoice = { "Quarterstaff  1d6 bludgeoning, Versatile (1d8)",
                                     "Dagger        1d4 piercing, finesse, light, thrown (range 20/60)" };
             string[] armsChoiceSelection = { "Quarterstaff", "Dagger" };
-            equipment.Add(Builder.Selection("Select a weapon: \r\n", armsChoice, armsChoiceSelection));
+            equipment.Add(Builder.ItemToList("Select a weapon: \r\n", "", armsChoice, armsChoiceSelection));
 
             string[] equipmentPack = { "Scholar’s Pack: \r\n" +
                                        "   backpack, book of lore, bottle of ink, ink pen, 10 sheets of parchment, little bag of sand, small knife.",
                                        "Explorer’s Pack: \r\n" +
                                        "   backpack, bedroll, mess kit, tinderbox, 10 torches, 10 day's rations, waterskin, 50 ft of hempen rope" };
             string[] equipmentPackSelection = { "Scholar's Pack", "Explorer's Pack" };
-            equipment.Add(Builder.Selection("Select an equipment pack: ", equipmentPack, equipmentPackSelection));
+            equipment.Add(Builder.ItemToList("Select an equipment pack: ", "", equipmentPack, equipmentPackSelection));
             return equipment;
         }
         public static List<string> DuplicateItemStacker(List<string> list)
