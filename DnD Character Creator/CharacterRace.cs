@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -41,10 +41,12 @@ namespace DnD_Character_Creator
         }
         public string SetRace()
         {
+            Console.Clear();
             int choice = 0;
-            bool check = false;
+            bool check = true;
             string[] races = { "Dwarf", "Elf", "Halfling", "Human", "Dragonborn", "Gnome", "Half-Elf", "Half-Orc", "Tiefling" };
-            while (check == false)  //Loop keeps the user in the menu until a proper selection is made.
+
+            while (check == true)  //Loop keeps the user in the menu until a proper selection is made.
             {
                 Console.WriteLine("1. Dwarf            +2 Constitution +1 Wisdom    +1 HP per lvl\r\n" +
                                   "                    Artisans Tools: Smith's, Brewer's, Mason's. Advantage & resistance against poison \r\n" +
@@ -78,7 +80,7 @@ namespace DnD_Character_Creator
                 try
                 {
                     choice = int.Parse(Console.ReadLine()) - 1; //User enters a number corresponding to the race they want to play. The number is adjusted to match the array index.
-                    check = true;
+                    check = false;
                 }
                 catch (SystemException)     //The user gives some input that isnt an integer. The console clears and the loop starts over.
                 {
@@ -91,11 +93,11 @@ namespace DnD_Character_Creator
             }
             catch (IndexOutOfRangeException)    //If the user enters an illegal integer, a selection will be made at random. This is a temporary solution, as deciding on the user's behalf is inappropriate.
             {
-                Random rnd = new Random();
-                int randomChoice = rnd.Next(0, races.Length);
-                Console.WriteLine("\r\nYou entered an invalid number. {0} has been selected at random. \r\nPress enter to continue.", races[randomChoice]);
-                Console.Read();     //The user is forced to read the error message so that they have feedback on what happened.
-                return races[randomChoice];
+                Console.Clear();
+                Console.WriteLine("Improper selection. \r\n" +
+                                  "Press enter to try again.");
+                Console.ReadLine();
+                return "";
             }
         }
         public static Stats Conditionals(CharacterBasic character, CharacterRace race, Stats racialBonus, Equipment equipment, Languages languages, Proficiency proficiencies, Features features)
@@ -179,7 +181,6 @@ namespace DnD_Character_Creator
         public static CharacterRace Dwarf(CharacterRace raceSettings)
         {
             string[] toolOptions = { "Smith's Tools", "Brewer's Tools", "Mason's Tools" };
-
             raceSettings.Race = "Dwarf";
             raceSettings.SubRace = "Hill";
             raceSettings.Draconic = "";
@@ -188,7 +189,7 @@ namespace DnD_Character_Creator
             raceSettings.NativeLanguage = "Dwarven";
             raceSettings.Features = new List<string> { "Darkvision", "Dwarven Resilience", "Dwarven Combat Training", "Stonecutting" };
             raceSettings.RaceArmsProficiencies = new List<string> { "Battleaxe", "Handaxe", "Light Hammer", "Warhammer" };
-            raceSettings.RaceToolsProficiencies.Add(Builder.Selection("Select an artisan's tool to gain proficiency in: ", toolOptions, toolOptions));
+            raceSettings.RaceToolsProficiencies.Add(Builder.ItemToList("Select an artisan's tool to gain proficiency in: ", "", toolOptions, toolOptions));
             if (raceSettings.SubRace == "Hill")
             {
                 raceSettings.RacialBonus.Wisdom = 1;
@@ -214,7 +215,10 @@ namespace DnD_Character_Creator
                 raceSettings.RaceArmsProficiencies = new List<string> { "Longsword", "Shortsword", "Shortbow", "Longbow" };
                 Console.Clear();
                 Wizard elf = new Wizard();
-                raceSettings.Cantrips.Add(Builder.Selection("Select a wizard cantrip: ", elf.SpellList(0), elf.SpellList(0)));
+                string cantripToList = Builder.ItemToList("Select a wizard cantrip: ", "", elf.SpellList(0), elf.SpellList(0));
+                raceSettings.Cantrips.Add(cantripToList);
+                raceSettings.Features.Add(cantripToList);
+                
             }
             return raceSettings;
         }
@@ -282,7 +286,8 @@ namespace DnD_Character_Creator
             Console.WriteLine("Half-Elves recieve 2 bonus values to apply to any desired Abillity Score");
             for (int i = 0; i < 2; i++)
             {
-                switch (Builder.Selection("\r\nAssign 2 bonus values \r\n", statBonus, statBonus))
+                string statToBonus = Builder.ItemToList("\r\nAssign 2 bonus values \r\n", "", statBonus, statBonus);
+                switch (statToBonus)
                 {
                     case "Constitution":
                         raceSettings.RacialBonus.Constitution += 1;
