@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,32 +30,46 @@ namespace DnD_Character_Creator
                     Console.Clear();
                 }
             }
+            check = false;
+
             try
             {
                 return selection[choice];
             }
             catch (IndexOutOfRangeException)
             {
-                Random rnd = new Random();
-                int randomChoice = rnd.Next(0, selection.Length);
-                Console.WriteLine("\r\nYou entered an invalid number. {0} has been selected at random. \r\nPress enter to continue.", selection[randomChoice]);
-                Console.Read();
-                return selection[randomChoice];
+                while (check == false)
+                {
+                    Console.WriteLine("Improper selection. \r\n" +
+                                      "Press enter to try again.");
+                    Console.ReadLine();
+                    return "";
+                }
             }
-            }
-            public static void DataLine(string prompt, List<string> names, List<int> data)   //Constructs a line of numbers, the line can be named.
+            return selection[choice];
+
+        }
+        public static void DataLine(string prompt, List<string> names, List<int> data)   //Constructs a line of numbers, the line can be named.
+        {
+            List<int> dataSet = data;
+            List<string> dataNames = names;
+            while (dataNames.Count < dataSet.Count)
             {
-                List<int> dataSet = data;
-                List<string> dataNames = names;
-                while (dataNames.Count < dataSet.Count)
-                {
-                    dataNames.Add("");
-                }
-                Console.Write(prompt);
-                for (int i = 0; i < dataSet.Count(); i++)
-                {
-                    Console.Write(dataNames[i] + " " + dataSet[i] + " ");
-                }
+                dataNames.Add("");
+            }
+            Console.Write(prompt);
+            for (int i = 0; i < dataSet.Count(); i++)
+            {
+                Console.Write(dataNames[i] + " " + dataSet[i] + " ");
             }
         }
+        public static string ItemToList(string prompt, string itemToList, string[] option, string[] selection)
+        {
+            while (itemToList == "")
+            {
+                itemToList = Builder.Selection(prompt, option, selection);
+            }
+            return itemToList;
+        }
     }
+}
