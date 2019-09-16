@@ -19,7 +19,3 @@ Future updates shall include:
 2. Point-Buy.
 3. Prepared Spells for magic users. Display of Spell Attack/DC/slots
 4. Add the Grappler Feat.
-
-CHANGELOG:
-
-9/16  selecting an out of bounds number no longer assigns a choice at random. The application will now reprompt you to make a proper selection.
