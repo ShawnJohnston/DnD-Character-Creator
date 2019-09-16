@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -88,7 +88,12 @@ namespace DnD_Character_Creator
             string[] spellArray = cleric.SpellList(spellLvl);
             for (int i = 0; i < count; i++)
             {
-                spellList.Add(Builder.Selection(prompt, spellArray, spellArray));
+                string spellToList = "";
+                while (spellToList == "")
+                {
+                    spellToList = Builder.Selection(prompt, spellArray, spellArray);
+                }
+                spellList.Add(spellToList);
                 spellArray = Proficiency.Configuration.ProficiencyListUpdate(spellList, spellArray);
             }
             return spellList;
@@ -118,7 +123,9 @@ namespace DnD_Character_Creator
             string[] spellArray = wizard.SpellList(1);
             for (int i = 0; i < 6; i++)
             {
-                spellList.Add(Builder.Selection("Wizards start at level 1 with 6 spells in their spell book. \r\nSelect your spells: ", spellArray, spellArray));
+                string spellToList = Builder.ItemToList("Wizards start at level 1 with 6 spells in their spell book. \r\n" +
+                                                        $"Select your spells. Selection: {i + 1} ", "", spellArray, spellArray);
+                spellList.Add(spellToList);
                 spellArray = Proficiency.Configuration.ProficiencyListUpdate(spellList, spellArray);
             }
             return spellList;
@@ -132,7 +139,7 @@ namespace DnD_Character_Creator
             {
                 count = 3;
                 prompt = "Cantrips are 0 level spells with unlimited uses. Unlike prepared spells, they are permanent choices once gaming starts. \r\n" +
-                         "Select 3 cantrips: ";
+                         "Select 3 cantrips. ";
             }
             else    //Prepared spells for Wizard = Intelligence Modifier + Wizard level
             {
@@ -146,7 +153,8 @@ namespace DnD_Character_Creator
             string[] spellArray = wizard.SpellList(spellLvl);
             for (int i = 0; i < count; i++)
             {
-                spellList.Add(Builder.Selection(prompt, spellArray, spellArray));
+                string spellToList = Builder.ItemToList(prompt + $"Selection {i + 1}", "", spellArray, spellArray);
+                spellList.Add(spellToList);
                 spellArray = Proficiency.Configuration.ProficiencyListUpdate(spellList, spellArray);
             }
             return spellList;
