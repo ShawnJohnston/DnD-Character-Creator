@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,6 +33,7 @@ namespace DnD_Character_Creator
             stats = new Stats(); //Reset
             List<string> emptyList = new List<string>();    //Buffer list
             List<string> statNames = new List<string> { "Constitution", "Strength", "Dexterity", "Intelligence", "Wisdom", "Charisma" };
+            string statSelection = "";
             List<int> unassignedScores = new List<int>();
 
             unassignedScores = StatProcessor(unassignedScores); //Gets numbers for user to assign
@@ -42,7 +43,7 @@ namespace DnD_Character_Creator
 
             for (int i = 0; i < 6; i++) //This loop displays user stat choices
             {
-                switch (Builder.Selection($"Stat Pool: {unassignedScores[0]} {unassignedScores[1]} {unassignedScores[2]} {unassignedScores[3]} {unassignedScores[4]} {unassignedScores[5]}\r\n\r\n" +
+                    switch (Builder.Selection($"Stat Pool: {unassignedScores[0]} {unassignedScores[1]} {unassignedScores[2]} {unassignedScores[3]} {unassignedScores[4]} {unassignedScores[5]}\r\n\r\n" +
                                           "Optimal stat arrangement: \r\n" +
                                           "Cleric: Wisdom     Fighter: Strength     Rogue: Dexterity     Wizard: Intelligence \r\n\r\n" +
                                           "Ability Modifier Table: \r\n" +
@@ -51,31 +52,34 @@ namespace DnD_Character_Creator
                                           $"Racial Bonus ({character.Race}):   Con: {racialBonus.Constitution} Str: {racialBonus.Strength} Dex: {racialBonus.Dexterity} Int: {racialBonus.Intelligence} Wis: {racialBonus.Wisdom} Cha: {racialBonus.Charisma} \r\n\r\n" +
                                           $"Ability Scores: Con: {stats.Constitution} Str: {stats.Strength} Dex: {stats.Dexterity} Int: {stats.Intelligence} Wis: {stats.Wisdom} Cha: {stats.Charisma} \r\n" +
                                           "\r\nAssign: " + unassignedScores[i], statNames.ToArray(), statNames.ToArray()))
-                {
-                    case "Constitution":
-                        stats.Constitution = unassignedScores[i];
-                        statNames.Remove("Constitution");
-                        break;
-                    case "Strength":
-                        stats.Strength = unassignedScores[i];
-                        statNames.Remove("Strength");
-                        break;
-                    case "Dexterity":
-                        stats.Dexterity = unassignedScores[i];
-                        statNames.Remove("Dexterity");
-                        break;
-                    case "Intelligence":
-                        stats.Intelligence = unassignedScores[i];
-                        statNames.Remove("Intelligence");
-                        break;
-                    case "Wisdom":
-                        stats.Wisdom = unassignedScores[i];
-                        statNames.Remove("Wisdom");
-                        break;
-                    case "Charisma":
-                        stats.Charisma = unassignedScores[i];
-                        statNames.Remove("Charisma");
-                        break;
+                    {
+                        case "Constitution":
+                            stats.Constitution = unassignedScores[i];
+                            statNames.Remove("Constitution");
+                            break;
+                        case "Strength":
+                            stats.Strength = unassignedScores[i];
+                            statNames.Remove("Strength");
+                            break;
+                        case "Dexterity":
+                            stats.Dexterity = unassignedScores[i];
+                            statNames.Remove("Dexterity");
+                            break;
+                        case "Intelligence":
+                            stats.Intelligence = unassignedScores[i];
+                            statNames.Remove("Intelligence");
+                            break;
+                        case "Wisdom":
+                            stats.Wisdom = unassignedScores[i];
+                            statNames.Remove("Wisdom");
+                            break;
+                        case "Charisma":
+                            stats.Charisma = unassignedScores[i];
+                            statNames.Remove("Charisma");
+                            break;
+                        case "":
+                            i--;
+                            break;
                 }
             }
             return stats;
@@ -84,20 +88,26 @@ namespace DnD_Character_Creator
         {
             processedValues.Clear();
             string[] statMode = { "Standard Array", "Roll" };
-            switch (Builder.Selection("How is your character Ability scores being determined? \r\n\r\n" +
-                                      "Standard array gives you fixed numbers to assign wherever you choose. Best for balance. \r\n" +
-                                      "15, 14, 13, 12, 10, 9\r\n\r\n" +
-                                      "Rolling for stats gives you 6 random numbers, each determined by rolling 4 D6 and dropping the lowest. Risky but fun.\r\n\r\n", statMode, statMode))
+            string statSelection = "";
+            while (statSelection == "")
             {
-                case "Standard Array":
-                    processedValues = new List<int> { 15, 14, 13, 12, 10, 9 };
-                    break;
+                switch (statSelection = Builder.Selection("How is your character Ability scores being determined? \r\n\r\n" +
+                                                      "Standard array gives you fixed numbers to assign wherever you choose. Best for balance. \r\n" +
+                                                      "15, 14, 13, 12, 10, 9\r\n\r\n" +
+                                                      "Rolling for stats gives you 6 random numbers, each determined by rolling 4 D6 and dropping the lowest. Risky but fun.\r\n\r\n", statMode, statMode))
+                {
+                    case "Standard Array":
+                        processedValues = new List<int> { 15, 14, 13, 12, 10, 9 };
+                        break;
 
-                case "Roll":    //4 random numbers are rolled and sorted. Top 3 numbers added together, then added to the return array. This all occurs 6 times.
-                    processedValues = DiceRoll.RollForStats();
-                    break;
+                    case "Roll":    //4 random numbers are rolled and sorted. Top 3 numbers added together, then added to the return array. This all occurs 6 times.
+                        processedValues = DiceRoll.RollForStats();
+                        break;
                     //case "Point Buy":
                     //    break;
+                    case "":
+                        break;
+                }
             }
             return processedValues;
         }
