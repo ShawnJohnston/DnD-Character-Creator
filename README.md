@@ -1,4 +1,5 @@
 DnD Character Creator: SRD Edition
+
 This is a console application for quick automation of character creation for the tabletop game Dungeons & Dragons. 
 Fumbling through books and PDF's takes a long time and there's a lot of cross referencing involving multiple character settings.
 
