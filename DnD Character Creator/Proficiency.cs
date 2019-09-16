@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -104,7 +104,8 @@ namespace DnD_Character_Creator
                     acolytePrompt = "The 'Acolyte' background grants proficiency in Insight and Religion. \r\n";
                     for (int i = 0; i < options; i++)   //Selection menu to choose unassigned skill proficiencies. Will remove skills from list as selected.
                     {
-                        knownProficiencies.Add(Builder.Selection(acolytePrompt + "The " + character.CClass + " can choose proficiency in " + options + " of the following skills: \r\n", proficiencyOptions, proficiencyOptions));
+                        knownProficiencies.Add(Builder.ItemToList(acolytePrompt + "The " + character.CClass + " can choose proficiency in " + options + " of the following skills: \r\n\r\n" +
+                                                                $"Selection {i + 1}:\r\n", "", proficiencyOptions, proficiencyOptions));
                         proficiencyOptions = ProficiencyListUpdate(knownProficiencies, proficiencyOptions);
                     }
                     options = 0; //Zero-ed out to prevent unexpected errors.
@@ -113,7 +114,9 @@ namespace DnD_Character_Creator
                 {
                     for (int i = 0; i < options; i++)   //Selection menu to choose unassigned skill proficiencies. Will remove skills from list as selected.
                     {
-                        knownProficiencies.Add(Builder.Selection(acolytePrompt + "The " + character.CClass + " can choose proficiency in " + options + " of the following skills: \r\n", characterClass.ClassSkillProficiencies, characterClass.ClassSkillProficiencies));
+                        knownProficiencies.Add(Builder.ItemToList(acolytePrompt + "The " + character.CClass + " can choose proficiency in " + options + " of the following skills: \r\n\r\n" +
+                                                                  $"Selection {i + 1}:\r\n", "", characterClass.ClassSkillProficiencies, characterClass.ClassSkillProficiencies));
+
                         characterClass.ClassSkillProficiencies = ProficiencyListUpdate(knownProficiencies, characterClass.ClassSkillProficiencies);
                     }
                     options = 0;    //Zero-ed out to prevent unexpected errors.
@@ -130,7 +133,8 @@ namespace DnD_Character_Creator
                     proficiencyOptions = ProficiencyListUpdate(knownProficiencies, proficiencyOptions);
                     for (int i = 0; i < options; i++)
                     {
-                        knownProficiencies.Add(Builder.Selection("Half-Elves gain 2 extra proficiencies: \r\n", proficiencyOptions, proficiencyOptions));
+                        knownProficiencies.Add(Builder.ItemToList("Half-Elves gain 2 extra proficiencies: \r\n\r\n" +
+                                                                 $"Selection { i + 1}:\r\n", "", proficiencyOptions, proficiencyOptions));
                         proficiencyOptions = ProficiencyListUpdate(knownProficiencies, proficiencyOptions);
                     }
                 }
@@ -139,9 +143,9 @@ namespace DnD_Character_Creator
             public static string[] ProficiencyListUpdate(List<string> knownProficiencies, string[] proficiencyList) //After a proficiency is added to a list, this method removes that proficiency from the selection list
             {
                 List<string> bufferList = new List<string>();
-                
+
                 //If any skill in the proficiency selection list is not in the 'known' list, it will be added to a buffer list.
-                foreach (string skill in proficiencyList)    
+                foreach (string skill in proficiencyList)
                 {
                     if (!knownProficiencies.Contains(skill))
                     {
