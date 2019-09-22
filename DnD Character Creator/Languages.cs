@@ -40,7 +40,7 @@ namespace DnD_Character_Creator
             for (int i = 0; i < choices; i++)
             {
                 //User is told their extra language criteria, told how many they have, and given a list to choose from. The list removes languages as the user selects them.
-                knownLanguages.Add(Builder.ItemToList($"Your character will gain an extra language if the selected race is Human or Half-Elf. \r\n" +
+                knownLanguages.Add(Builder.ItemToList($"Your character will gain an extra language if the selected race is Human, Elf, or Half-Elf. \r\n" +
                                                      $"Your character will gain 2 extra languages if the selected background is Acolyte. \r\n" +
                                                      $"Your current settings grant {choices} extra languages. \r\n\r\n" +
                                                      $"Selection {i + 1}:\r\n", "", languageArray, languageArray));
