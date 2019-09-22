@@ -1,4 +1,5 @@
 CHANGELOG:
-
+9/21  In the Languages class, the user is told that they gain an extra language as a Human or Half-Elf.
+      "Elf" was added to the prompt. Only the prompt was wrong, not the code to add the +1 to languages.
 9/16  Selecting an out-of-bounds number no longer assigns a choice at random. 
       The application will now reprompt you to make a proper selection.
