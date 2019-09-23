@@ -120,37 +120,34 @@ namespace DnD_Character_Creator
         public static int SetArmorClass(Stats abilityModifiers, Equipment equipment)    //Armor class is determined by armor, shield, and/or Dexterity modifiers
         {
             //Armor and shield technically only affect AC if they are being used.
-            //This application assumes that the player will be using said equipment upon selection. This is a design feature, as the intended scope is for quick-start setup. Not character updating.
-
-            int armorClass = 0;
+            //This application assumes that the player will be using said equipment upon selection. This is a design feature, as the intended scope is for quick-start setup, not ongoing character updating.
+            
+            int armor = 0;
             int dexBonus = abilityModifiers.Dexterity;
-            List<string> armor = new List<string>{ "Leather Armor", "Scale Mail", "Chain Mail" };
-            if (equipment.Bag.Contains("Chain Mail"))
+            int shield = 0;
+            int leatherArmor = 11 + dexBonus;
+            int scaleMail = 13 + dexBonus;
+            int chainMail = 16;
+            if (scaleMail > 15)
             {
-                armorClass = 16;
+                scaleMail = 15;
             }
-            else if (equipment.Bag.Contains("Leather Armor") && abilityModifiers.Set == true)
+            string[] armorSets = { "Leather Armor", "Scale Mail", "Chain Mail" };
+            int[] armorValues = { leatherArmor, scaleMail, chainMail };
+            for (int i = 0; i < armorSets.Length; i++)
             {
-                armorClass = 11 + dexBonus;
-            }
-            else if (equipment.Bag.Contains("Scale Mail") && abilityModifiers.Set == true)
-            {
-                armorClass = 13 + dexBonus;
-                if (armorClass > 15)
+                if (equipment.Bag.Contains(armorSets[i]))
                 {
-                    armorClass = 15;
+                    armor = armorValues[i];
                 }
             }
-            else
-            {
-                armorClass = 0;
-            }
-
             if (equipment.Bag.Contains("Shield"))
             {
-                armorClass += 2;
+                shield = 2;
             }
-            return armorClass;
+
+            int armorClassVariables = armor + shield;
+            return armorClassVariables;
         }
     }
 }
