@@ -1,4 +1,8 @@
 CHANGELOG:
+9/23  1. Health.SetArmorClass() rewritten. Each armor set is initialized. parallel arrays written for armor names and their values.
+         If the armor name appears in equipment, it's value is set. If character has a shield, +2 to AC total.
+         **AC still resets if race is changed, Fighting Style: Defense does not add +1 to AC.
+      2. Comments in program main edited to correct typos.
 9/21  In the Languages class, the user is told that they gain an extra language as a Human or Half-Elf.
       "Elf" was added to the prompt. Only the prompt was wrong, not the code to add the +1 to languages.
 9/16  Selecting an out-of-bounds number no longer assigns a choice at random. 
