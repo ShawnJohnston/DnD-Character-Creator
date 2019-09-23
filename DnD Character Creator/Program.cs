@@ -8,17 +8,18 @@ namespace DnD_Character_Creator
 {
     //Features to add:
     //High Priority:
-    //1.    When the user finishes, there should be an option to launch a static webpage the contains all of their setting. 
-    //      The page should have a fillable character sheet auto-filled with their entries
-    //2.    Selecting prepared spell is not implemented. There's no distinction between cantrips and spells. The dashboard needs to display Spell DC, Spell ATK, Spell slots
-    //3.    Point-Buy is not implemented for stat assignment.
-    //4.    Only the standard 4 character classes are included in this build. Adding the rest will be a major effort.
+    //1.    AC resets to 0 if user changes character race.
+    //2.    When the user finishes, there should be an option to launch a static webpage that contains all of their setting. 
+    //      The page should have a fillable character sheet auto-filled with their entries.
+    //3.    Selecting prepared spell is not implemented. There's no distinction between cantrips and spells. The dashboard needs to display Spell DC, Spell ATK, Spell slots
+    //4.    Point-Buy is not implemented for stat assignment.
+    //5.    Only the standard 4 character classes are included in this build. Adding the rest will be a major effort.
     //Low priority
-    //5.    Refactor RefreshValues() method. It is written poorly.
-    //6.    Character background needs to include personality trait, ideal, bond, flaw.
-    //7.    Use of the DiceRoll.Roll method if the user wants to pick something randomly.
-    //8.    Include more descriptions for specific setings (ie. spells, etc.)
-    //9.    Race selections that don't include a subrace are misaligned to the right by 1 space.
+    //6.    Refactor RefreshValues() method. It is written poorly.
+    //7.    Character background needs to include: personality trait, ideal, bond, flaw.
+    //9.    Use of the DiceRoll.Roll method if the user wants to pick something randomly.
+    //9.    Include more descriptions for specific settings (ie. spells, etc.)
+    //10.   Race selections that don't include a subrace are misaligned to the right by 1 space.
     class Program
     {
         static void Main(string[] args)
@@ -36,9 +37,9 @@ namespace DnD_Character_Creator
             //Constitution, Strength, Dexterity, Intelligence, Wisdom, Charisma
             Stats stats = new Stats();              //Generic object to hold numbers.
             Stats racialBonus = new Stats();        //These values come from race selection.
-            Stats abilityScores = new Stats();      //These values are the end destination. Stat values and Racial values are added and stored here.
+            Stats abilityScores = new Stats();      //Stat values and Racial values are added and stored here.
             Stats abilityModifiers = new Stats();   //These values are used for various skills and actions. Each number is determined directly by it's corresponding ability score from a table.
-            Stats savingThrows = new Stats();       //These values are primarily used for specific proficiencies. Each number is determined by it's corresponding ability modifier + 2 if proficient.
+            Stats savingThrows = new Stats();       //These values are primarily used for specific proficiencies. Each number is determined by it's corresponding ability modifier; + 2 if proficient.
 
             Languages languages = new Languages();
             Skills skills = new Skills();
@@ -108,7 +109,7 @@ namespace DnD_Character_Creator
                         character.Gender = character.SetGender();
                         character.GenderSet = true;
                         return true;
-                    case "Race": //Races in D&D are better described as humanoid subspecies. Dwarfs differ from Elves like Pitbulls differ from Greyhounds.
+                    case "Race": //Races in D&D are better described as humanoid subspecies. Dwarves differ from Elves like Pitbulls differ from Greyhounds.
                         Console.Clear();
                         character.Race = "";
                         RaceListsReset();   //Empties relevent lists used when character race is changed.
@@ -185,8 +186,9 @@ namespace DnD_Character_Creator
                 }
                 return false;
             }
-            void RefreshValues()    //This function updates all settings, especially numerical, every time the user returns to the main menu.
+            void RefreshValues()    
             {
+                //This function updates all settings, especially numerical, every time the user returns to the main menu.
                 //Equipment
                 equipment.Bag = Proficiency.Configuration.ListHelper(equipment.Bag, equipment.RaceBag, equipment.ClassBag);  //equipment is consolidated into main list.
                 equipment.Bag = Equipment.DuplicateItemStacker(equipment.Bag);     //Any duplicates are stacked. If 2 of 'x' exists, it becomes '2 x'.
@@ -221,7 +223,7 @@ namespace DnD_Character_Creator
                 }
 
 
-                //The following is poorly optimized code, due to being hard-coded. Methods will be written to streamline these in the future.
+                //The following is poorly optimized code, due to being manually coded for individual data points. Methods will be written to streamline these in the future.
 
                 //Saving Throws
                 savingThrows = Skills.SavingThrowAssigner(savingThrows, abilityModifiers);  //Saving Throw x = Ability Modifier x, +2 if proficient
@@ -358,12 +360,12 @@ namespace DnD_Character_Creator
                     skills.Persuasion += proficiencies.ProficiencyBonus;
                 }
 
-                //These disabled lists are part of potential strategies for replacing manually-written code with a loop. 
+                //These disabled lists are part of potential strategies for replacing manually-written code with loops. 
                 //Each skill is grouped by the ability modifier it depends on. By default, the skill literally equals the modifier.
                 //If the character is proficient in the skill, it's value = ability modifier + proficiency bonus. The bonus is always 2 so long as the application only manipulates level 1 characters.
                 //Intended strategy to replace hard-coded instructons:
                 //First: Use a loop to compare known proficiencies with list of all proficiencies. If a match occurs, switch the corresponding skills boolean to true, else boolean is false.
-                //Second: Use another loop to compare list of all skills with skills boolean. If false, skill = moifier. If true, skill = modifier + proficiency bonus;
+                //Second: Use another loop to compare list of all skills with skills boolean. If false, skill = modifier. If true, skill = modifier + proficiency bonus;
 
                 //List<string> allSkillNames = new List<string> { "Athletics",
                 //                                                "Acrobatics", "SleightOfHand", "Stealth",
