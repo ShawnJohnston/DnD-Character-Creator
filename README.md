@@ -17,6 +17,11 @@ Features:
 
 Future updates shall include:
 1. The remaining classes: Barbarian, Bard, Druid, Monk, Paladin, Ranger, Sorceror, Warlock.
-2. Point-Buy.
+2. Point-Buy stat configuration.
 3. Prepared Spells for magic users. Display of Spell Attack/DC/slots
-4. Add the Grappler Feat.
+4. Grappler Feat.
+5. Randomized selections.
+6. Equipment weight burden.
+7. Separation of equipment by equipped or stored.
+
+To contact me regarding this application, email me at shawnjohnarts@gmail.com
