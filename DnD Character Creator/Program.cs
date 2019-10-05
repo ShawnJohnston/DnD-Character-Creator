@@ -8,18 +8,17 @@ namespace DnD_Character_Creator
 {
     //Features to add:
     //High Priority:
-    //1.    AC resets to 0 if user changes character race.
-    //2.    When the user finishes, there should be an option to launch a static webpage that contains all of their setting. 
-    //      The page should have a fillable character sheet auto-filled with their entries.
-    //3.    Selecting prepared spell is not implemented. There's no distinction between cantrips and spells. The dashboard needs to display Spell DC, Spell ATK, Spell slots
-    //4.    Point-Buy is not implemented for stat assignment.
-    //5.    Only the standard 4 character classes are included in this build. Adding the rest will be a major effort.
+    //1.    When the user finishes, there will be a future feature to launch a static webpage that contains all of their setting. 
+    //      The page should have a fillable character sheet auto-filled with their entries. 
+    //2.    Selecting prepared spell is not implemented. There's no distinction between cantrips and spells. The dashboard needs to display Spell DC, Spell ATK, Spell slots
+    //3.    Point-Buy is not implemented for stat assignment.
+    //4.    Only the standard 4 character classes are included in this build. Adding the rest will be a major effort.
     //Low priority
-    //6.    Refactor RefreshValues() method. It is written poorly.
-    //7.    Character background needs to include: personality trait, ideal, bond, flaw.
-    //9.    Use of the DiceRoll.Roll method if the user wants to pick something randomly.
-    //9.    Include more descriptions for specific settings (ie. spells, etc.)
-    //10.   Race selections that don't include a subrace are misaligned to the right by 1 space.
+    //5.    Refactor RefreshValues() method. It is written poorly.
+    //6.    Character background needs to include: personality trait, ideal, bond, flaw.
+    //7.    Use of the DiceRoll.Roll method if the user wants to pick something randomly.
+    //8.    Include more descriptions for specific settings (ie. spells, fighting styles, etc.)
+    //9.   Race selections that don't include a subrace are misaligned to the right by 1 space.
     class Program
     {
         static void Main(string[] args)
@@ -223,7 +222,7 @@ namespace DnD_Character_Creator
                 }
 
 
-                //The following is poorly optimized code, due to being manually coded for individual data points. Methods will be written to streamline these in the future.
+                //The following is poorly optimized code, it manually sets individual data points. Methods will be written to streamline these in the future.
 
                 //Saving Throws
                 savingThrows = Skills.SavingThrowAssigner(savingThrows, abilityModifiers);  //Saving Throw x = Ability Modifier x, +2 if proficient
@@ -403,7 +402,6 @@ namespace DnD_Character_Creator
             }
             void RaceListsReset()
             {
-                equipment.Bag = new List<string>();                 //Reset
                 equipment.RaceBag = new List<string>();             //Reset
                 languages.List = new List<string> { "Common" };     //Reset
                 languages.Native = "";                              //Reset
@@ -423,14 +421,14 @@ namespace DnD_Character_Creator
             Console.WriteLine("Welcome to Shawn Johnston's Dungeons & Dragons Character Creation Machine. \r\n\r\n" +
                               "This program is intended to facilitate quick-start character creation. \r\n" +
                               "The ruleset being used is for the 5th edition of Dungeons and Dragons. \r\n" +
-                              "Playing a different version of the game requires another tool. \r\n\r\n" +
+                              "Playing a different version of the game requires a different tool. \r\n\r\n" +
 
-                              "This program uses only open source SRD5.1 content under the Wizard's of the Coast Open Gaming License. \r\n" +
+                              "This program uses only open source SRD5.1 content under the Wizards of the Coast Open Gaming License. \r\n" +
                               "Dungeons and Dragons is owned entirely by Wizards of the Coast. This program is not for sale or profit.\r\n" +
                               "Details can be found here: https://dnd.wizards.com/articles/features/systems-reference-document-srd \r\n\r\n" +
 
                               "This program is not designed to give comprehensive explanation on how to create DnD characters or play the game. \r\n" +
-                              "For any material that is ambiguous, please refer to the basic rules pdf available for free from the creators here: \r\n" +
+                              "For any steps that are ambiguous, please refer to the basic rules pdf available for free from the creators here: \r\n" +
                               "https://media.wizards.com/2018/dnd/downloads/DnD_BasicRules_2018.pdf \r\n" +
                               "For more character options, please use the official Dungeons & Dragons character creator at http://dndbeyond.com. \r\n\r\n" +
 
