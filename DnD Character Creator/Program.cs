@@ -403,7 +403,7 @@ namespace DnD_Character_Creator
             }
             void RaceListsReset()
             {
-                equipment.Bag = new List<string>();                 //Reset
+                //equipment.Bag = new List<string>();                 //Reset
                 equipment.RaceBag = new List<string>();             //Reset
                 languages.List = new List<string> { "Common" };     //Reset
                 languages.Native = "";                              //Reset
