@@ -25,3 +25,5 @@ Future updates shall include:
 7. Separation of equipment by equipped or stored.
 
 To contact me regarding this application, email me at shawnjohnarts@gmail.com
+
+**Note: This application will be temporarily inactive for the remainder of the Fall/2019 semester, except for occasional periods of procrastination. Hiatus will be lifted in December, then work on an appropriate UI will begin.
