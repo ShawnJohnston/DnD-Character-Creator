@@ -1,0 +1,549 @@
+﻿<Window x:Class="DnD_Character_Creator_UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DnD_Character_Creator_UI"
+        mc:Ignorable="d"
+        Title="Dungeons and Dragons Character Creator" Height="600" Width="900" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
+    <Border Padding="10">
+        <StackPanel Orientation="Vertical" Margin="0.4,0.4,0.2,0">
+            <!--Upper Panel-->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="65"/>
+                    <ColumnDefinition Width="90"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--Character Basic-->
+                <StackPanel Grid.Column="0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="0" Orientation="Horizontal">
+                            <TextBlock Text="Name: " Width="70" Margin="0 5"/>
+                            <Button x:Name="NameSelection" Click="NameSelection_Click" Content="" Width="120"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="1" Orientation="Horizontal">
+                            <TextBlock Text="Gender: " Width="70" Margin="0 5"/>
+                            <Button x:Name="GenderSelection" Content="" Width="120"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="2" Orientation="Horizontal">
+                            <TextBlock Text="Alignment: " Width="70" Margin="0 5"/>
+                            <Button x:Name="AlignmentSelection" Content="" Width="120"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="3" Orientation="Horizontal">
+                            <TextBlock Text="Race: " Width="70" Margin="0 5"/>
+                            <Button x:Name="RaceSelection" Content="" Width="120"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="4" Orientation="Horizontal">
+                            <TextBlock Text="Subrace: " Width="70" Margin="0 5"/>
+                            <Button x:Name="SubraceSelection" Content="" Width="120"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="5" Orientation="Horizontal">
+                            <TextBlock Text="Class: " Width="70" Margin="0 5"/>
+                            <Button x:Name="ClassSelection" Content="" Width="120"/>
+                        </StackPanel>
+                        <StackPanel  Grid.Row="6" Orientation="Horizontal">
+                            <TextBlock Text="Subclass: " Width="70" Margin="0 5"/>
+                            <Button x:Name="SubclassSelection" Content="" Width="120"/>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+                <!--Stats-->
+                <StackPanel Grid.Column="1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Grid.Row="0" Orientation="Horizontal">
+                            <TextBlock Text="Con: " Margin="0 5" Width="30"/>
+                            <TextBlock x:Name="Con" Margin="0 5"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="1" Orientation="Horizontal">
+                            <TextBlock Text="Str: " Margin="0 5" Width="30"/>
+                            <TextBlock x:Name="Str" Margin="0 5"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="2" Orientation="Horizontal">
+                            <TextBlock Text="Dex: " Margin="0 5" Width="30"/>
+                            <TextBlock x:Name="Dex" Margin="0 5"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="3" Orientation="Horizontal">
+                            <TextBlock Text="Int: " Margin="0 5" Width="30"/>
+                            <TextBlock x:Name="Int" Margin="0 5"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="4" Orientation="Horizontal">
+                            <TextBlock Text="Wis: " Margin="0 5" Width="30"/>
+                            <TextBlock x:Name="Wis" Margin="0 5"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="5" Orientation="Horizontal">
+                            <TextBlock Text="Cha: " Margin="0 5" Width="30"/>
+                            <TextBlock x:Name="Cha" Margin="0 5"/>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+                <!--Character Properties-->
+                <StackPanel Grid.Column="2">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="0" Orientation="Horizontal">
+                            <TextBlock Text="Level: " Width="60" Margin="0 5"/>
+                            <TextBlock x:Name="Level" Text="1" Margin="0 5"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="1" Orientation="Horizontal">
+                            <TextBlock Text="HP: " Width="60" Margin="0 5"/>
+                            <TextBlock x:Name="HP" Text="" Margin="0 5"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="2" Orientation="Horizontal">
+                            <TextBlock Text="AC: " Width="60" Margin="0 5"/>
+                            <TextBlock x:Name="AC" Text="" Margin="0 5"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="3" Orientation="Horizontal">
+                            <TextBlock Text="Initiative: " Width="60" Margin="0 5"/>
+                            <TextBlock x:Name="Init" Text="" Margin="0 5"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="4" Orientation="Horizontal">
+                            <TextBlock Text="Speed: " Width="60" Margin="0 5"/>
+                            <TextBlock x:Name="Speed" Text="" Margin="0 5"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="5" Orientation="Horizontal">
+                            <TextBlock Text="Hit Dice: " Width="60" Margin="0 5"/>
+                            <TextBlock x:Name="HitDice" Text="" Margin="0 5"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="6" Orientation="Horizontal">
+                            <TextBlock Text="Inspiration: " Width="60" Margin="0 5"/>
+                            <TextBlock x:Name="Ins" Text="" Margin="0 5"/>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+                <!--Languages Block-->
+                <StackPanel Grid.Column="3" Orientation="Vertical">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                    </Grid>
+                    <StackPanel Grid.Row="0">
+                        <TextBlock Text="Languages: " Margin="0 5 0 10"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1">
+                        <TextBlock Text="Common"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="2">
+                        <TextBlock Text=""/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="3">
+                        <TextBlock Text=""/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="0">
+                        <TextBlock Text="" Margin="0 0 0 10"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1">
+                        <TextBlock Text=""/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="2">
+                        <TextBlock Text=""/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="3">
+                        <TextBlock Text=""/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="2">
+                        <TextBlock Text=""/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="3">
+                        <TextBlock Text=""/>
+                    </StackPanel>
+                </StackPanel>
+                <!--Arms Proficiencies-->
+                <StackPanel Grid.Column="4" Orientation="Vertical">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                    </Grid>
+                    <StackPanel Grid.Row="0">
+                        <TextBlock Text="Arms Proficiencies: " Margin="0 5 0 10"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1">
+                        <TextBlock Text=""/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="2">
+                        <TextBlock Text=""/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="3">
+                        <TextBlock Text=""/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="0">
+                        <TextBlock Text="" Margin="0 0 0 10"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1">
+                        <TextBlock Text=""/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="2">
+                        <TextBlock Text=""/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="3">
+                        <TextBlock Text=""/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="2">
+                        <TextBlock Text=""/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="3">
+                        <TextBlock Text=""/>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Grid.Column="5" Orientation="Vertical">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                    </Grid>
+                    <StackPanel Grid.Row="0">
+                        <TextBlock Text="Tools Proficiencies: " Margin="0 5 0 10"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1">
+                        <TextBlock Text=""/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="2">
+                        <TextBlock Text=""/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="3">
+                        <TextBlock Text=""/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="0">
+                        <TextBlock Text="" Margin="0 0 0 10"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1">
+                        <TextBlock Text=""/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="2">
+                        <TextBlock Text=""/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="3">
+                        <TextBlock Text=""/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="2">
+                        <TextBlock Text=""/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="3">
+                        <TextBlock Text=""/>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+            <!--Lower Panel-->
+            <Grid Margin="0 10 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="90"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <!--Race Features-->
+                <StackPanel Grid.Column="0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Column="0" Text="Race Features: " Margin="0 0 0 5" Grid.ColumnSpan="30"/>
+                        <TextBlock Grid.Column="2" Grid.Row="1" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="2" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="3" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="4" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="5" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="6" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="7" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="8" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="9" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="10" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="11" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="12" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="13" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="14" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="15" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="16" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="17" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="18" Text=""/>
+                    </Grid>
+                </StackPanel>
+                <!--Class Features-->
+                <StackPanel Grid.Column="1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Column="0" Text="Class Features: " Margin="0 0 0 5" Grid.ColumnSpan="30"/>
+                        <TextBlock Grid.Column="2" Grid.Row="1" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="2" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="3" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="4" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="5" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="6" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="7" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="8" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="9" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="10" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="11" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="12" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="13" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="14" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="15" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="16" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="17" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="18" Text=""/>
+                    </Grid>
+                </StackPanel>
+                <!--Class Features-->
+                <StackPanel Grid.Column="2">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Column="0" Text="Background Features: " Margin="0 0 0 5" Grid.ColumnSpan="30"/>
+                        <TextBlock Grid.Column="2" Grid.Row="1" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="2" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="3" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="4" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="5" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="6" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="7" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="8" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="9" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="10" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="11" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="12" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="13" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="14" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="15" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="16" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="17" Text=""/>
+                        <TextBlock Grid.Column="2" Grid.Row="18" Text=""/>
+                    </Grid>
+                </StackPanel>
+                <!--Skills Items-->
+                <StackPanel Grid.Column="3">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Column="0" Text="Skills: " Margin="0 0 0 5" Grid.ColumnSpan="30"/>
+                        <TextBlock Grid.Column="2" Grid.Row="1" Text="Acrobatics"/>
+                        <TextBlock Grid.Column="2" Grid.Row="2" Text="Animal Handling"/>
+                        <TextBlock Grid.Column="2" Grid.Row="3" Text="Arcana"/>
+                        <TextBlock Grid.Column="2" Grid.Row="4" Text="Athletics"/>
+                        <TextBlock Grid.Column="2" Grid.Row="5" Text="Deception"/>
+                        <TextBlock Grid.Column="2" Grid.Row="6" Text="History"/>
+                        <TextBlock Grid.Column="2" Grid.Row="7" Text="Insight"/>
+                        <TextBlock Grid.Column="2" Grid.Row="8" Text="Intimidation"/>
+                        <TextBlock Grid.Column="2" Grid.Row="9" Text="Investigation"/>
+                        <TextBlock Grid.Column="2" Grid.Row="10" Text="Medicine"/>
+                        <TextBlock Grid.Column="2" Grid.Row="11" Text="Nature"/>
+                        <TextBlock Grid.Column="2" Grid.Row="12" Text="Perception"/>
+                        <TextBlock Grid.Column="2" Grid.Row="13" Text="Performance"/>
+                        <TextBlock Grid.Column="2" Grid.Row="14" Text="Persuasion"/>
+                        <TextBlock Grid.Column="2" Grid.Row="15" Text="Religion"/>
+                        <TextBlock Grid.Column="2" Grid.Row="16" Text="Sleight of Hands"/>
+                        <TextBlock Grid.Column="2" Grid.Row="17" Text="Stealth"/>
+                        <TextBlock Grid.Column="2" Grid.Row="18" Text="Survival"/>
+                    </Grid>
+                </StackPanel>
+                <!--Saving Throw Items-->
+                <StackPanel Grid.Row="0" Grid.Column="4">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="30"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Column="0" Grid.Row="0" Text="Saving Throws: " Margin="0 0 0 5" Grid.ColumnSpan="50"/>
+                        <TextBlock Grid.Column="2" Grid.Row="1" Text="Con"/>
+                        <TextBlock Grid.Column="2" Grid.Row="2" Text="Str"/>
+                        <TextBlock Grid.Column="2" Grid.Row="3" Text="Dex"/>
+                        <TextBlock Grid.Column="2" Grid.Row="4" Text="Int"/>
+                        <TextBlock Grid.Column="2" Grid.Row="5" Text="Wis"/>
+                        <TextBlock Grid.Column="2" Grid.Row="6" Text="Cha"/>
+                    </Grid>
+                </StackPanel>
+                <!--Equipment-->
+                <Grid Grid.Column="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Text="Equipment"/>
+                </Grid>
+
+            </Grid>
+        </StackPanel>
+    </Border>
+</Window>

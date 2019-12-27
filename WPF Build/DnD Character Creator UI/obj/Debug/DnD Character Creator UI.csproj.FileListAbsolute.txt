@@ -1,0 +1,30 @@
+C:\Users\Shawn\source\repos\DnD Character Creator UI\DnD Character Creator UI\bin\Debug\DnD Character Creator UI.exe.config
+C:\Users\Shawn\source\repos\DnD Character Creator UI\DnD Character Creator UI\bin\Debug\DnD Character Creator UI.exe
+C:\Users\Shawn\source\repos\DnD Character Creator UI\DnD Character Creator UI\bin\Debug\DnD Character Creator UI.pdb
+C:\Users\Shawn\source\repos\DnD Character Creator UI\DnD Character Creator UI\obj\Debug\DnD Character Creator UI.csprojAssemblyReference.cache
+C:\Users\Shawn\source\repos\DnD Character Creator UI\DnD Character Creator UI\obj\Debug\MainWindow.g.cs
+C:\Users\Shawn\source\repos\DnD Character Creator UI\DnD Character Creator UI\obj\Debug\App.g.cs
+C:\Users\Shawn\source\repos\DnD Character Creator UI\DnD Character Creator UI\obj\Debug\DnD Character Creator UI_MarkupCompile.cache
+C:\Users\Shawn\source\repos\DnD Character Creator UI\DnD Character Creator UI\obj\Debug\DnD Character Creator UI_MarkupCompile.lref
+C:\Users\Shawn\source\repos\DnD Character Creator UI\DnD Character Creator UI\obj\Debug\MainWindow.baml
+C:\Users\Shawn\source\repos\DnD Character Creator UI\DnD Character Creator UI\obj\Debug\DnD Character Creator UI.g.resources
+C:\Users\Shawn\source\repos\DnD Character Creator UI\DnD Character Creator UI\obj\Debug\DnD_Character_Creator_UI.Properties.Resources.resources
+C:\Users\Shawn\source\repos\DnD Character Creator UI\DnD Character Creator UI\obj\Debug\DnD Character Creator UI.csproj.GenerateResource.cache
+C:\Users\Shawn\source\repos\DnD Character Creator UI\DnD Character Creator UI\obj\Debug\DnD Character Creator UI.csproj.CoreCompileInputs.cache
+C:\Users\Shawn\source\repos\DnD Character Creator UI\DnD Character Creator UI\obj\Debug\DnD Character Creator UI.exe
+C:\Users\Shawn\source\repos\DnD Character Creator UI\DnD Character Creator UI\obj\Debug\DnD Character Creator UI.pdb
+C:\Users\thatb\Downloads\DnD Character Creator UI\DnD Character Creator UI\DnD Character Creator UI\bin\Debug\DnD Character Creator UI.exe.config
+C:\Users\thatb\Downloads\DnD Character Creator UI\DnD Character Creator UI\DnD Character Creator UI\bin\Debug\DnD Character Creator UI.exe
+C:\Users\thatb\Downloads\DnD Character Creator UI\DnD Character Creator UI\DnD Character Creator UI\bin\Debug\DnD Character Creator UI.pdb
+C:\Users\thatb\Downloads\DnD Character Creator UI\DnD Character Creator UI\DnD Character Creator UI\obj\Debug\DnD Character Creator UI.csprojAssemblyReference.cache
+C:\Users\thatb\Downloads\DnD Character Creator UI\DnD Character Creator UI\DnD Character Creator UI\obj\Debug\MainWindow.g.cs
+C:\Users\thatb\Downloads\DnD Character Creator UI\DnD Character Creator UI\DnD Character Creator UI\obj\Debug\App.g.cs
+C:\Users\thatb\Downloads\DnD Character Creator UI\DnD Character Creator UI\DnD Character Creator UI\obj\Debug\DnD Character Creator UI_MarkupCompile.cache
+C:\Users\thatb\Downloads\DnD Character Creator UI\DnD Character Creator UI\DnD Character Creator UI\obj\Debug\DnD Character Creator UI_MarkupCompile.lref
+C:\Users\thatb\Downloads\DnD Character Creator UI\DnD Character Creator UI\DnD Character Creator UI\obj\Debug\MainWindow.baml
+C:\Users\thatb\Downloads\DnD Character Creator UI\DnD Character Creator UI\DnD Character Creator UI\obj\Debug\DnD Character Creator UI.g.resources
+C:\Users\thatb\Downloads\DnD Character Creator UI\DnD Character Creator UI\DnD Character Creator UI\obj\Debug\DnD_Character_Creator_UI.Properties.Resources.resources
+C:\Users\thatb\Downloads\DnD Character Creator UI\DnD Character Creator UI\DnD Character Creator UI\obj\Debug\DnD Character Creator UI.csproj.GenerateResource.cache
+C:\Users\thatb\Downloads\DnD Character Creator UI\DnD Character Creator UI\DnD Character Creator UI\obj\Debug\DnD Character Creator UI.csproj.CoreCompileInputs.cache
+C:\Users\thatb\Downloads\DnD Character Creator UI\DnD Character Creator UI\DnD Character Creator UI\obj\Debug\DnD Character Creator UI.exe
+C:\Users\thatb\Downloads\DnD Character Creator UI\DnD Character Creator UI\DnD Character Creator UI\obj\Debug\DnD Character Creator UI.pdb
